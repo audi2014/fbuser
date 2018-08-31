@@ -1,0 +1,16 @@
+{
+    "name": "audi2014/fbuser",
+    "description": "get fb user by token",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Perepelytsia, Artur Mykhailovich",
+            "email": "audi2014@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4": { "Audi2014\\FbUser\\": "src/" }
+    }
+}
