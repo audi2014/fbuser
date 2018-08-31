@@ -1,65 +1,34 @@
-<?php namespace lib\FaceBook;
+<?php namespace Audi2014\SimpleFbApi;
 class FaceBookUser {
 
-	private static $keys = [
-		'fbId',
-		'fbToken',
-		'email',
-		'firstName',
-		'lastName',
-	];
+	public $id;
+	public $token;
+	public $email;
+	public $firstName;
+	public $lastName;
 
-	private $data;
+	public function requireEmail() {
+		if($this->id && empty($this->email)) {
+			throw new \Exception("no email in this facebook account");			
+		}
+	}
+	public function __construct($data) {
+		if(!empty($data)) {
 
-	public function __construct(array $data) {
-		$this->data = [];
-		foreach (self::$keys as $key) {
-			if(isset($data[$key])) {
-				$this->data[$key] = $data[$key];
-			} else {
-				$this->data[$key] = "";
-				//throw new \Exception("FaceBookUser __construct require `$key` property. ".json_encode($data), 1);				
+			if(is_string($data)) {
+				$data = @json_decode($data,true);
 			}
-		}
-		return $this;
-	}
+			if(!is_array($data)) {
+				$data = (array)$data;
+			}
 
-	public function getFbId() {
-		return $this->getRequiredProperty('fbId');
-	}
-	public function getFbToken() {
-		return $this->getProperty('fbToken');
-	}
-	public function getEmail() {
-		return $this->getProperty('email');
-	}
-	public function getFirstName() {
-		return $this->getProperty('firstName');
-	}
-	public function getLastName() {
-		return $this->getProperty('lastName');
-	}
+			foreach ($this as $key => $value) {
+				if(isset($data[$key])) {
+					$this->{$key} = $data[$key];
+				}
+			}
 
-	private function getRequiredProperty($key) {
-		if(empty($value = $this->getProperty($key))) {
-			throw new \Exception(
-				"FaceBookUser have empty property: `$key`."
-			);
-		} else return $value;
-	}
-
-	private function getProperty($key) {
-		if(in_array($key, self::$keys)) {
-			return filter_var(
-				$this->data[$key], 
-				FILTER_SANITIZE_STRING,
-				FILTER_FLAG_NO_ENCODE_QUOTES
-			);
-		} else {
-			throw new \Exception(
-				"FaceBookUser does note have property: `$key`. Valid properties:"
-				.json_encode(self::$keys)
-			);			
 		}
 	}
+
 }

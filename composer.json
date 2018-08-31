@@ -1,5 +1,5 @@
 {
-    "name": "audi2014/fbuser",
+    "name": "Audi2014/SimpleFbApi",
     "description": "get fb user by token",
     "type": "library",
     "license": "MIT",
@@ -12,6 +12,6 @@
     ],
     "require": {},
     "autoload":{
-        "psr-4": { "Audi2014\\FbUser\\": "src/" }
+        "psr-4": { "Audi2014\\SimpleFbApi\\": "src/" }
     }
 }
