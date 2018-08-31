@@ -3,6 +3,7 @@
     "description": "get fb user by token",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Perepelytsia, Artur Mykhailovich",
