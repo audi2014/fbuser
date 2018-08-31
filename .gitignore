@@ -1,3 +1,5 @@
 # ignore composer vendor directory
 /vendor
 .idea/*
+*.pem
+composer.lock
