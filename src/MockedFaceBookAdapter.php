@@ -3,7 +3,7 @@
 class MockedFaceBookAdapter implements ApiInterface {
 
 
-    public function getFaceBookUserFromToken($fbToken) : FaceBookUser {
+    public function getFaceBookUserFromToken(string $fbToken): FaceBookUser {
         $fbId = rand(10, 15) . "00000000000000";
         $fbToken = 'fb-mock-token-111111111';
         $email = 'test.fb.email@fb.com';
